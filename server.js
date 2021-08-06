@@ -8,6 +8,7 @@ const giveRoutes = require("./routes/givings")
 const security = require("./middleware/security")
 const profileRoutes = require("./routes/profile")
 const settings = require("./routes/settings")
+const points = require("./routes/points")
 
 
 //added by Kelsey
@@ -35,7 +36,7 @@ app.use("/profile/donations", profileRoutes)
 app.use("profile/recycles", profileRoutes)
 
 app.use("/settings", settings)
-
+app.use("/points", points)
 
 
 app.get("/", async (req, res, next) => {
