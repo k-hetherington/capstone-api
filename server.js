@@ -10,7 +10,6 @@ const profileRoutes = require("./routes/profile")
 const settings = require("./routes/settings")
 const points = require("./routes/points")
 
-
 //added by Kelsey
 // const homePage = require("./routes/home")
 // app.use("/", homePage)
@@ -36,7 +35,9 @@ app.use("/profile/donations", profileRoutes)
 app.use("profile/recycles", profileRoutes)
 
 app.use("/settings", settings)
+// app.use("/settings", settings)
 app.use("/points", points)
+
 
 
 app.get("/", async (req, res, next) => {
@@ -63,5 +64,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, ()=> {
   console.log(`🚀 Server listening on http://localhost:3001`)
 })
-
-

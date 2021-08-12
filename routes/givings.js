@@ -10,15 +10,30 @@ const router = express.Router()
 //security.requireAuthenticatedUser,
 router.post("/",  security.requireAuthenticatedUser, async(req, res, next)=>{
     try {
-        //res.locals.user
         const user = res.locals.user
         const givings = await Giving.createGiving({ newGiving:req.body, user })
-        return res.status(201).json({ givings })
-        
-    } catch (error) {
-        next(error)
+        return res.status(201).json({  givings }) 
+    } catch (err) {
+        return next(err)   
     }
 })
+
+// router.post("/",  security.requireAuthenticatedUser, async(req, res, next)=>{
+//     try {
+//         const user = res.locals.user
+       
+//         const badgivings = await Giving.validateGiving({ badGiving:req.body, user })
+//         return res.status(201).json({  badgivings }) 
+//     } catch (err) {
+//         next(err)   
+//     }
+// })
+
+
+
+
+
+module.exports = router;
 
 
 
