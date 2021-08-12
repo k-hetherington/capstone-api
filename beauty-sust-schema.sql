@@ -10,6 +10,7 @@ CREATE TABLE users (
   age         INTEGER NOT NULL,
   zip_code    INTEGER NOT NULL,
   profile_pic TEXT,
+  upload_pic  bytea,
   is_admin    BOOLEAN NOT NULL DEFAULT FALSE,
   created_at  TIMESTAMP NOT NULL DEFAULT NOW()
 );
@@ -24,7 +25,8 @@ CREATE TABLE give (
   -- zip_code   INTEGER NOT NULL,
   product_pic TEXT,
   created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
-  points_quantity INTEGER
+  points_quantity INTEGER,
+  redeemed_quantity INTEGER
 );
 
 --Obehi: Represent the example products we obtain as a recycle or a donation. On Home page it is split into two 

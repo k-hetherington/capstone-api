@@ -13,7 +13,8 @@ class User{
             last_name: user.last_name,
             age: user.age,
             zip_code: user.zip_code,
-            profile_pic : user.profile_pic
+            profile_pic : user.profile_pic,
+            upload_pic : user.upload_pic
             
         }
     }

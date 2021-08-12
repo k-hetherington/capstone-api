@@ -10,6 +10,8 @@ const profileRoutes = require("./routes/profile")
 const settings = require("./routes/settings")
 const points = require("./routes/points")
 
+
+
 //added by Kelsey
 // const homePage = require("./routes/home")
 // app.use("/", homePage)
