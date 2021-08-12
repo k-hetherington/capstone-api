@@ -53,12 +53,12 @@ class Profile{
         if(!user){
             throw new BadRequestError("No authentication recognized")
         }
-        const requiredFields = ["profile_pic"]
-        requiredFields.forEach(field =>{
-            if(!url.hasOwnProperty(field)){
-                throw new BadRequestError(`Missing ${field} in request body`)
-            }
-        })
+        // const requiredFields = ["profile_pic"]
+        // requiredFields.forEach(field =>{
+        //     if(!url.hasOwnProperty(field)){
+        //         throw new BadRequestError(`Missing ${field} in request body`)
+        //     }
+        // })
         const query = `
         UPDATE users SET
             profile_pic = $1
@@ -66,6 +66,24 @@ class Profile{
         const result = await db.query(query, [url.profile_pic, user.username])
         const profile = result.rows[0]
         return profile
+}
+static async uploadPic({ user, upload }){
+    if(!user){
+        throw new BadRequestError("No authentication recognized")
+    }
+    // const requiredFields = ["upload_pic"]
+    // requiredFields.forEach(field =>{
+    //     if(!upload.hasOwnProperty(field)){
+    //         throw new BadRequestError(`Missing ${field} in request body`)
+    //     }
+    // })
+    const query = `
+    UPDATE users SET
+        upload_pic = $1
+    WHERE username= $2;`
+    const result = await db.query(query, [upload.upload_pic, user.username])
+    const pic = result.rows[0]
+    return pic
 }
 
 
@@ -90,23 +108,6 @@ class Profile{
         return recycles
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
 
 module.exports = Profile

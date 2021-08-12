@@ -65,6 +65,10 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next)=>{
         const user = res.locals.user
         console.log(user)
         const url = await Profile.addPic({user,url: req.body})
+        const upload = await Profile.uploadPic({user, upload: req.body})
+        if (url === null){
+            return res.status(200).json({ upload })
+        }
         return res.status(200).json({ url })
     } catch (err) {
         next(err)
