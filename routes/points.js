@@ -23,6 +23,7 @@ router.get("/", security.requireAuthenticatedUser, async(req, res, next)=>{
     //     pointNumber += points[index].points_quantity
     // })
     //const number = await Points.getConfirmNum({user})
+    console.log("pointNumber", pointNumber)
     return res.status(200).json({pointNumber})
 })
 

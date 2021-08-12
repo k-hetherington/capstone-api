@@ -25,7 +25,7 @@ CREATE TABLE give (
   -- zip_code   INTEGER NOT NULL,
   product_pic TEXT,
   created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
-  points_quantity INTEGER,
+  points_quantity INTEGER DEFAULT 0,
   redeemed_quantity INTEGER
 );
 

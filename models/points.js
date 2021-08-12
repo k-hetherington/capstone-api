@@ -15,17 +15,23 @@ class Points{
     //     console.log(points[index].points_quantity)
     //     pointNumber += points[index].points_quantity
     // })
-        console.log("points",points)
+        console.log("getpoints",points)
         return points
     }
 
     static async redeemPoints({user}){
-        var points = await Points.getPoints({user}).points_quantity - 20
+        console.log("works?", await Points.getPoints({user}))
+        var points = await Points.getPoints({user})
         console.log("redeem",points)
+        if(points.points_quantity){
+        var quantity = points.points_quantity -20
+        console.log("quantity", quantity)
         const results = await db.query(
-        `UPDATE give SET points_quantity  = $1 WHERE user_id= (SELECT id FROM users WHERE username = $2) `, [points, user.username]
+        `UPDATE give SET points_quantity  = $1 WHERE user_id= (SELECT id FROM users WHERE username = $2) `, [quantity, user.username]
         )
-        return results.rows[0]
+        return results.rows
+        }
+        
     }
 
 
