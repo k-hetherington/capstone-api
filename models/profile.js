@@ -11,7 +11,6 @@ class Profile{
         const query =`SELECT quantity FROM give WHERE user_id =(SELECT id FROM users WHERE username = $1) AND is_used = FALSE`
         const result = await db.query(query, [user.username])
         const donations = result.rows
-        //console.log(donations)
         return donations
     }
     //need to get number of recycled products
@@ -53,12 +52,6 @@ class Profile{
         if(!user){
             throw new BadRequestError("No authentication recognized")
         }
-        // const requiredFields = ["profile_pic"]
-        // requiredFields.forEach(field =>{
-        //     if(!url.hasOwnProperty(field)){
-        //         throw new BadRequestError(`Missing ${field} in request body`)
-        //     }
-        // })
         const query = `
         UPDATE users SET
             profile_pic = $1
